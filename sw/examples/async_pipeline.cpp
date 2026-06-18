@@ -240,7 +240,9 @@ int main() {
   // Shared weights, uploaded to the device once and reused by every GEMM.
   std::vector<int8_t> W1 = make_mat(K0, K1, 1);
   std::vector<int8_t> W2 = make_mat(K1, K2, 4);
-  uint64_t dW1 = npu_dev_malloc(W1.size());
+  uint64_t dW1 = 
+  
+  (W1.size());
   uint64_t dW2 = npu_dev_malloc(W2.size());
   if (!dW1 || !dW2) { fprintf(stderr, "device alloc failed\n"); npu_async_close(); return 2; }
 
